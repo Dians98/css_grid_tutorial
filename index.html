@@ -1,22 +1,312 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GRID TUTORIAL</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Page Complexe Bootstrap + Grid + Flexbox</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* ----------- Layout global ----------- */
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafd;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header dans container bootstrap */
+    header {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem 0;
+    }
+
+    header .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    /* ----------- Section Hero : Container Fluid + Grid ----------- */
+    .hero {
+      background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+      color: white;
+      padding: 3rem 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    .hero-text button {
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      background: #ffc107;
+      color: #333;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background: #e0a800;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 500px;
+      height: 300px;
+      background: url('https://via.placeholder.com/500x300/ffffff/0d6efd?text=Hero+Image') center/cover no-repeat;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(13, 110, 253, 0.5);
+    }
+
+    /* ----------- Features Section: Container + Flexbox ----------- */
+    .features {
+      max-width: 1140px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature-card {
+      background: white;
+      flex: 1 1 280px;
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      flex-grow: 1;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* ----------- Grid Section: container-fluid + CSS Grid ----------- */
+    .grid-section {
+      background: #fff;
+      padding: 3rem 1rem;
+    }
+
+    .grid-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 250px);
+      gap: 1.5rem;
+    }
+
+    .grid-item {
+      background: #0d6efd;
+      color: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .grid-item:hover {
+      background: #6610f2;
+      box-shadow: 0 0 25px rgba(102, 16, 242, 0.7);
+    }
+
+    .grid-item:nth-child(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      font-size: 1.6rem;
+    }
+
+    .grid-item:nth-child(4) {
+      grid-column: 2 / 4;
+      grid-row: 2 / 3;
+    }
+
+    /* ----------- Footer ----------- */
+    footer {
+      background: #212529;
+      color: #bbb;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    /* ----------- Responsive ----------- */
+    @media (max-width: 991px) {
+      .grid-wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 200px);
+      }
+
+      .grid-item:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .grid-item:nth-child(4) {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .hero .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-img {
+        height: 220px;
+        margin: 0 auto;
+      }
+
+      .features {
+        flex-direction: column;
+      }
+
+      .feature-card {
+        max-width: 100%;
+      }
+
+      .grid-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 180px);
+      }
+
+      .grid-item:nth-child(1),
+      .grid-item:nth-child(4) {
+        grid-column: 1 / 2 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Bootstrap container + navbar -->
+  <header>
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="#" class="navbar-brand text-white">MaMarque</a>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-white" href="#">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Fonctionnalités</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Tarifs</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero section : container-fluid + grid -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Transformez votre business avec notre outil moderne</h1>
+        <p>Boostez votre productivité, collaborez efficacement, et gagnez du temps.</p>
+        <button>Commencer maintenant</button>
+      </div>
+      
+      <div class="hero-img"></div>
+    </div>
+  </section>
+
+  <!-- Features section : container + flexbox -->
+  <section class="features container">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Rapide</h3>
+      <p>Profitez d'une expérience fluide et sans latence.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Sécurisé</h3>
+      <p>Vos données sont protégées avec les meilleures technologies.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <h3>Personnalisable</h3>
+      <p>Adaptez l’outil à vos besoins avec de nombreuses options.</p>
+    </div>
+  </section>
+
+  <!-- Grid section : container-fluid + css grid -->
+  <section class="grid-section">
+    <div class="grid-wrapper container-fluid">
+      <div class="grid-item">Section Importante - prend deux colonnes en haut</div>
+      <div class="grid-item">Bloc 2</div>
+      <div class="grid-item">Bloc 3</div>
+      <div class="grid-item">Bloc 4 - prend deux colonnes en bas</div>
+      <div class="grid-item">Bloc 5</div>
+      <div class="grid-item">Bloc 6</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 MaMarque - Tous droits réservés.
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Popper + Bootstrap JS) -->
+  <script src="https://cdn.jsdelivr.net/npm
